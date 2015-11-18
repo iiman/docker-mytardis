@@ -14,7 +14,7 @@ script:
       - docker-compose up -d
       - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
       
-      - CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+      - CURRENT_BRANCH=$TRAVIS_BRANCH
       - export MYTARDIS_TAG=`if [  "$MYTARDIS_TAG" == ""  ]; then echo "$CURRENT_BRANCH"; else echo "$MYTARDIS_TAG"; fi`
       - export CELERY_TAG=`if [  "$CELERY_TAG" == ""  ]; then echo "$CURRENT_BRANCH"; else echo "$CELERY_TAG"; fi`
       - export BEAT_TAG=`if [  "$BEAT_TAG" == ""  ]; then echo "$CURRENT_BRANCH"; else echo "$BEAT_TAG"; fi`
